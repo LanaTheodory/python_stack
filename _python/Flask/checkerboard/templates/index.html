@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href=" {{ url_for ('static' , filename= 'style.css')}}" >
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+
+
+
+<body>
+    <div class="cont" style="width: {{y*50}}px ;">
+    {% for i in range(x) %}
+    
+        {% if i %2 == 0 %}
+            {% for k in range(y) %}
+            {% if k %2 == 0 %}
+            <div class="white" style="background-color: {{color1}};"></div>
+            {% endif %}
+            {% if k%2 !=0 %}
+        
+            <div class="black" style="background-color: {{color2}};"></div>
+            {% endif %}
+     
+            {% endfor %}
+        {% endif %}
+             
+
+        {% if i %2 != 0 %}
+             {% for k in range(y) %}
+             {% if k %2 == 0 %}
+                <div class="black" style="background-color: {{color2}};"></div>
+                {% endif %}
+                {% if k%2 !=0 %}
+          
+                <div class="white" style="background-color: {{color1}};"></div>
+                {% endif %}
+
+             {% endfor %}
+         {% endif %}
+
+    {% endfor %}
+
+  
+    </div>
+
+
+
+</body>
+</html>
