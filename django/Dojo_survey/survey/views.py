@@ -6,7 +6,7 @@ def index(requests):
 
 def info(requests):
     
-    name = requests.POST['name']
+   name= requests.POST['name']
     email = requests.POST['email']
     location = requests.POST['location']
     language = requests.POST['language']

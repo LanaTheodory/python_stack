@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random</title>
+</head>
+<body>
+    <h1>Welcome to the great number game</h1>
+    <p>I am thinking of a random number between 1 and 100</p>
+    <p>Take a guess</p>
+    <p style="width: 100; height: 100; background-color: rgb(255, 4, 192); text-align: center;">Too High!!</p>
+    <form action="/result" method="POST">
+        {% csrf_token %}
+    <input type="number" name="guess" >
+    <button>Submit</button>
+    </form>
+</body>
+
+</html>
