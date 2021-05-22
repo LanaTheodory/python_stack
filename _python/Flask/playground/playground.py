@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_templates 
 app = Flask(__name__)
 
 @app.route("/play")
@@ -15,6 +15,7 @@ def level3(x,color):
     return render_template("index3.htm",x=x, y=color)
 
 
-
-if __name__=="__main__":
+if (__name__) == "__main__":
     app.run(debug=True)
+
+  
