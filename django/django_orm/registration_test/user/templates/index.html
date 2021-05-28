@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/register</title>
+</head>
+<body>
+    
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+    {% csrf_token %}
+     
+    <input type="hidden" name="forms" value="register">
+    
+    <table>
+    <tr>
+    <td >First name</td>
+    <td ><input  type="text" name="first_name" required></td>
+    </tr>
+    
+
+    <tr>
+    <td>Last name</td>
+    <td><input type="text" name="last_name" required ></td>
+    </tr>  
+    <tr>
+    <td>Email</td>
+    <td><input type="email" name="email" required ></td>
+</tr>  
+<tr>
+    <td>Password </td>
+    <td><input type="password" name="password" required ></td>
+</tr>  
+<tr>
+    <td>Password confirmation</td>
+    <td><input type="password" name="pwdcon" required ></td>
+</tr>  
+</table> 
+      
+    <button>Register</button>
+    </form>
+    
+
+    <hr>
+
+
+
+    <h1>Login</h1>
+    <form action="/register" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="forms" value="login" >
+        <table>
+            <tr>
+        <td>Email</td>
+        <td><input type="text" name="email1" required ></td>
+        </tr>
+       
+        <p>Password
+        <input type="password" name="password1" required ></p>
+    
+    </table>
+        <button>Login</button>
+    </form>
+</body>
+</html>

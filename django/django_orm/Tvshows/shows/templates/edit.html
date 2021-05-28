@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="float: right;"><a href='/shows'>Go back</a></div>
+    <form action="/shows/{{show.id}}/update" method="POST">
+        {% csrf_token %}
+        <p>Title <input type="text" name="title" value = "{{show.title}}" required > </p>
+        <p> Network<input type="text" name="network" value = "{{show.network}}" required > 
+            Release date <input type="date" name="release_date" value = "{{show.release_date}}" required >
+        </p>
+        <p>description <textarea name="description" value = "{{show.description}}" required ></textarea> </p>
+            <button>Update</button>
+    
+
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+    </form>
+    
+</body>
+</html>
