@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from . import models
 from django.contrib import messages
 from time import  strftime
-# import bcrypt
+import bcrypt
 
 
 

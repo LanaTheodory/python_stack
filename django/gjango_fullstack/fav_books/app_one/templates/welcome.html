@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title>Welcome</title>
+</head>
+<body>
+
+
+    <h2>Welcome, {{request.session.first_name}}!</h2>
+    <p> <a href="/logout"> Logout</a> </p>
+    <hr>
+
+    <form action="/addbook" method="POST">
+        {% csrf_token %}
+        <h1>Add a favorite book!</h1>
+        <p>Title: <input type="text" name="title" required> </p>
+        <p>Description: <input type="text" name="description" required> </p>
+        <input  class="btn btn-primary" type="submit" value="Add!">
+    </form>
+
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <hr>
+
+    <h1>All Books</h1>
+
+    {% for book in all_books%}
+    <h3> <a href="/book/{{book.id}}">{{book.title}}</a> </h3>
+    <p>(added by {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}})</p>
+<!-- ??? -->
+    <p>{{book.users_who_like.all.this_user_id}}</p>
+    {% if request.session.id == book.users_who_like.all %}
+    <p> <em>the book has already been favorited!</em> </p>
+
+    {% endif %}
+<!-- ??? -->
+
+    {% if request.session.id == book.uploaded_by.id %}
+    <p> <em>This is one of your favorite books</em></p>
+    {% endif %}
+
+    
+    {% if request.session.id != book.uploaded_by.id %}
+
+    <p> <a href="/add_to_fav/{{book.id}}">  Add this to your favorite books</a></p>
+    {% endif %}
+
+
+
+    {% endfor %}
+</body>
+</html>

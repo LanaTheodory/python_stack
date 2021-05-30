@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book details</title>
+</head>
+<body>
+    <h2>Welcome, {{request.session.first_name}}!</h2>
+    <h2> <a href="/logout"> Logout</a> </h2>
+    <h2> <a href='/welcome'>Go back</a> </h2>
+<hr>
+
+{% if request.session.id == this_book.uploaded_by.id %}
+<form action="/update_book/{{this_book.id}}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="{{this_book.title}} " >
+    <p>Added by : {{this_book.uploaded_by.first_name}}  {{this_book.uploaded_by.last_name}}</p>
+    <p>Added on: {{this_book.created_at}}   </p>
+    <p>last updated on: {{this_book.updated_at}} </p>
+
+    <p>Description: <textarea name="description"  placeholder="{{this_book.description}}"></textarea></p>
+    <button>Update</button>
+</form>
+<button> <a href="/delete_book/{{this_book.id}}"> Delete</a></button>
+
+{% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+   
+ <!-- list of users  ??????????????? -->
+ <h2>Users who like this book</h2>
+ {% for user in this_book.users_who_like.all %}
+<p>{{user.first_name}} {{user.last_name}}
+
+{% if request.session.id == user.id %}
+<a href="/Un_fav/{{this_book.id}}">Un-Favorite</a></p>
+{% endif %}
+
+{% endfor %}
+
+{% endif %}
+
+
+{% if request.session.id != this_book.uploaded_by.id %}
+    <h2>{{this_book.title}}"></h2>
+    <p>Added by : {{this_book.uploaded_by.first_name}}  {{this_book.uploaded_by.last_name}}</p>
+    <p>Added on: {{this_book.created_at}}   </p>
+    <p>last updated on: {{this_book.updated_at}} </p>
+    <p>Description : {{this_book.description}}</p>
+ <br> <br>
+    <h2 >Users who like this book</h2>
+
+    {% for user in this_book.users_who_like.all %}
+   <p>{{user.first_name}} {{user.last_name}} 
+
+   {% if request.session.id == user.id %}
+    <a href="/Un_fav/{{this_book.id}}">Un-Favorite</a>
+    </p>
+    {% endif %}
+   
+   {% endfor %}
+
+   <p>
+<a href="/add_to_fav/{{this_book.id}}"> Add to favorite</a>
+
+</p> 
+   
+
+{% endif %}
+
+
+
+         
+</body>
+</html>
