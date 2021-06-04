@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title>Login and Registration</title>
+</head>
+<style>
+    body{
+        display: flex;
+    }
+    .reg{
+        flex: 1;
+        margin: 20px;
+    }
+</style>
+<body>
+    <div class="reg">
+    <h1>Registration</h1>
+    
+    <form action="/register" method="POST">
+    {%csrf_token%}
+    <div class="form-group">
+    First name : <input class="form-control" type="text" name="fname" required> </div>
+    <div class="form-group">
+    Last name : <input class="form-control" type="text" name="lname" required> </div>
+    <div class="form-group">
+    Email : <input class="form-control" type="email" name="Email" required> </div>
+    <div class="form-group">
+    Password : <input class="form-control" type="password" name="passwd" required> </div>
+    <div class="form-group">
+    Conf pass : <input class="form-control" type="password" name="conpasswd" required> </div>
+    <button class="btn btn-primary" >register</button>
+
+    </form>
+
+    {% if messages %}
+<ul class="messages" >    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+
+</div>
+<div class="reg">
+    
+    <h1>LOGIN</h1>
+    
+    <form action="/login" method="POST">
+        {%csrf_token%}
+    <div class="form-group">
+    Email : <input class="form-control" type="email" name="Email" required> </div>
+    <div class="form-group">
+    password : <input class="form-control" type="password" name="passwd" required> </div>
+    <input  class="btn btn-primary" type="submit" value="Login">
+</form>
+
+
+</div>
+</body>
+</html>

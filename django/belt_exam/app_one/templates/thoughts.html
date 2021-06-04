@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <title>Thoughts</title>
+</head>
+<body>
+    
+    <nav>
+        <h2>
+        <a href="/thoughts">Dashboard</a>
+        <a href="/logout">logout</a>
+    </h2>
+    </nav>
+
+
+     <div class="thought">
+    <h2>{{this_thought.uploaded_by.first_name}} says:</h2>
+    <h2 class="box"> {{this_thought.description}}</h2>
+    <div class="btns">  
+    <button class="unlike"><a href="/unlike/{{this_thought.id}}">Unlike</a> </button>
+    <button class="like"><a href="/like/{{this_thought.id}}">Like</a> </button>
+
+   
+</div>
+    <p>People who liked this thought:</p>
+    <table>
+        <tr>
+            <td>First name</td>
+            <td>Last name</td>
+        </tr>
+        {% for user in this_thought.users_who_like.all %}
+        <tr>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+        </tr>
+
+    </div>
+
+        {% endfor %}
+    </table>
+
+</body>
+</html>

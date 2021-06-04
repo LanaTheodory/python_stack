@@ -1,0 +1,121 @@
+* {
+
+margin: 0px;
+padding: 0px;
+
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+
+#description {
+    height: 25px;
+    margin: 20px;
+    padding: 5px;
+}
+#addthought{
+    background-color: rgb(59, 59, 255);
+    padding: 5px;
+    color: white;
+
+ }
+
+hr{
+    width: 500px;
+}
+
+main{
+    padding: 10px;
+    margin: 5px;
+}
+
+.box {
+    width: 400px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px
+}
+.thought{
+    padding: 10px;
+}
+
+.thought p {
+display: inline-block;
+}
+
+.thought  h2{
+    display: inline-block;
+    }
+    
+.thought h3{
+    margin-left: 80px;
+}
+
+.delete{
+    background-color: red;
+    
+    padding: 5px;
+}
+
+.delete a{
+    color: white;
+}
+
+header a{
+    margin: 20px;
+}
+
+nav{
+   float: right;
+   
+    margin: 10px;
+
+}
+nav a{
+    margin: 5px;
+}
+
+body{
+    width : 1000px;
+    border: 1px solid black;
+}
+
+.like {
+    margin: 5px;
+    background-color: chartreuse;
+}
+
+.like a{
+    color:white
+}
+
+.unlike {
+    margin: 5px;
+    background-color: rgb(255, 115, 0);
+}
+
+.unlike a{
+    
+    color:white
+}
+
+.btns{
+    width: 530px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+table{
+    margin-top: 20px;
+}
+
+ td {
+    outline :1px solid black;
+    padding :5px;
+    width: 150px;
+}
